@@ -1,0 +1,7 @@
+.inputText {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+}
