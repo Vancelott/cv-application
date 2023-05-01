@@ -1,5 +1,5 @@
 import React from 'react';
-import './inputStyle.css';
+import { useState } from 'react';
 // import { useForm } from "react-hook-form";
 
 const basicInfo = ['First Name', 'Last Name', 'Email', 'Phone'];
@@ -10,12 +10,18 @@ const experience = ['Company Name', 'Position Title', 'Tasks at your job'];
 
 // const { register, handleSubmit } = useForm();
 
-const onInputChange = (event) => {
-  <div>{event.target.value}</div>
-}
+function InputField() {
+
+const OnInputChange = (event) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value)
+  };
+
 
 const infoInput = basicInfo.map((index) => (
-    <input className="input" key={index} onChange={onInputChange}/>
+    <input className="input" key={index} onChange={handleInputChange}/>
   ));
   const infoText = basicInfo.map((element, index) => (
       <p className="inputText" key={index}>{element}</p>
@@ -33,8 +39,7 @@ const infoInput = basicInfo.map((index) => (
           const experienceText = experience.map((element, index) => (
               <p className="inputText" key={index}>{element}</p>
             ));
-
-const InputField = () => {    
+    
             const infoList = infoText.map((element, index) => (
                 <React.Fragment key={index}>
                 {element}
@@ -53,20 +58,21 @@ const InputField = () => {
                 {experienceInput[index]}
                 </React.Fragment>
             ));
+
+            const DisplayInput = () => {
+              console.log( {handleInputChange} )
+              
           return (
-            <form>
+            <ul>
                 <div className="infoList">
               <ul>{infoList}</ul>
                 </div>
               <ul>{educationList}</ul>
               <ul>{experienceList}</ul>
               <button onClick={DisplayInput}>Submit</button>
-            </form>
+            </ul>
           );
-};
-
-const DisplayInput = (onSubmit) => {
-    console.log( {onInputChange} )
-}
+}}}
+;
 
 export default InputField;
