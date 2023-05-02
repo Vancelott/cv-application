@@ -60,14 +60,14 @@ body > #root > div {
     display: flex;
     flex-wrap: wrap;
     padding: 50px;
-    width: 500px;
-    height: 750px;
+    width: 480px;
+    height: 640px;
     gap: 30px;
     background-color: #fcf7e9;
-    max-width: 100%;
-    overflow: auto;
-    overflow-y: auto;
+    overflow-x: none;
+    overflow-y: none;
 }
+
 
 .basicInfo{
     display: flex;
@@ -150,8 +150,8 @@ body > #root > div {
 
 .edit{
     position: absolute;
-    top: 80px;
-    left: 410px;
+    top: 0px;
+    left: 390px;
 }
 
 .button {
@@ -193,24 +193,54 @@ body > #root > div {
    .full-rounded {
     border-radius: 2em;
    }
-
-@media only screen and (max-width: 1183px) {
-    .form {
-        transform: scale(0.9);
-        gap: 60px;
-       }
-}
-
    
-@media only screen and (max-width: 768px) {
+   @media screen and (max-width: 1183px) {
     .form {
-        transform: scale(0.8);
-       }
-}
-
-@media only screen and (max-width: 584px) {
-   .form {
+    transform: scale(0.9);
+    height: auto;
+    gap: 60px;
+    justify-content: center;
+    }
+    }
+    
+    @media only screen and (max-width: 768px) {
+    .form {
     transform: scale(0.7);
-    gap: 10px;
-   }
-}
+    gap: 30px;
+    }
+    .formInput {
+    padding: 30px;
+    }
+    .formValues {
+    padding: 30px;
+    height: auto;
+    width: 100%;
+    max-width: none;
+    }
+    }
+
+    @media screen and (max-height: 1183px) {
+        .form {
+        transform: scale(0.9);
+        width: auto;
+        gap: 60px;
+        justify-content: center;
+        }
+        }
+        
+        @media only screen and (max-height: 768px) {
+        .form {
+        transform: scale(0.7);
+        gap: 30px;
+        }
+        .formInput {
+        margin-top: 20rem;
+        padding: 30px;
+        }
+        .formValues {
+        padding: 30px;
+        width: 60%;
+        margin-bottom: -19rem;
+        max-width: none;
+        }
+        }
