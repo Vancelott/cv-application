@@ -1,18 +1,19 @@
 import { useState } from "react"
 import './CreateForm.css'
+import  profile from './profile.png'
 
 function CreateForm() {
   const [formValues, setFormValues] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    school: "",
-    title: "",
-    date: "",
-    company: "",
-    position: "",
-    tasks: "",
+    firstName: "David",
+    lastName: "Baker",
+    email: "DavidLBaker@teleworm.us",
+    phone: "+0370 0021462",
+    school: "Episcopal High School",
+    title: "Secondary education",
+    date: "2011-04-12",
+    company: "Microsoft",
+    position: "CEO",
+    tasks: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac tortor dignissim convallis aenean et tortor at risus.",
   });
 
   const handleChange = (event) => {
@@ -20,10 +21,20 @@ function CreateForm() {
     setFormValues({ ...formValues, [name]: value });
   };
 
+  const[formDisplay, setFormDisplay] = useState(false);
+
+  const formStyle = {
+    display: formDisplay ? "none" : "flex",
+  };
+
+  const toggleVisibility = () => {
+    setFormDisplay(!formDisplay);
+  };
+
   return (
     <div className="form">
-        <div className="input">
-        {/* <p>Basic Info</p> */}
+        <div className="formInput" style={formStyle}>
+            <p className="paragraph">Enter your information</p>
         <input
             type="text"
             name="firstName"
@@ -67,7 +78,7 @@ function CreateForm() {
             placeholder="Title of qualification"
         ></input>
         <input
-            type="text"
+            type="date"
             name="date"
             className="inputText"
             onChange={handleChange}
@@ -94,19 +105,31 @@ function CreateForm() {
             onChange={handleChange}
             placeholder="Tasks at your job"
         ></input>
+        <button className="button" onClick={toggleVisibility}>Submit</button>
         </div>
             <div className="formValues">
                 <ul className="listStyle">
-                    <li>{formValues.firstName}</li>
-                    <li>{formValues.lastName}</li>
-                    <li>{formValues.email}</li>
-                    <li>{formValues.phone}</li>
-                    <li>{formValues.school}</li>
-                    <li>{formValues.title}</li>
-                    <li>{formValues.date}</li>
-                    <li>{formValues.company}</li>
-                    <li>{formValues.position}</li>
-                    <li>{formValues.tasks}</li>
+                    <img className="image" src={profile} alt="profile"></img>
+                    <div className="basicInfo">
+                        <li className="bold">Basic Info</li>
+                        <li>First Name: {formValues.firstName}</li>
+                        <li>Last Name: {formValues.lastName}</li>
+                        <li>Email: {formValues.email}</li>
+                        <li>Phone number: {formValues.phone}</li>
+                    </div>
+                    <div className="education">
+                    <li className="bold">Education</li>
+                    <li>School: {formValues.school}</li>
+                    <li>Title of qualification: {formValues.title}</li>
+                    <li>Graduated: {formValues.date}</li>
+                    </div>
+                    <div className="work">
+                    <li className="bold">Work experience</li>
+                    <li>Company: {formValues.company}</li>
+                    <li>Position: {formValues.position}</li>
+                    <li id="tasks">Daily tasks: {formValues.tasks}</li>
+                    </div>
+                    <button className="button edit" onClick={toggleVisibility}>Edit</button>
                 </ul>
         </div>
     </div>
